@@ -22,23 +22,13 @@ __global__ void encodeRead(int k-value, char **read){
         N = 00
     */
     
-    //iterate through the read till a length of k is found or till the end of the read
-    int i;
-    for(i=1; i <= (int)(sizeof(read)); i++){
-        
-        //if the current iterator is the length of k
-        if(i % k == 0){
+    //iterate through the read and encode it into the 64-bit representation
+    for(int i=0; i < sizeof(read); i++){
+        //encode the value
 
-        }
-        else{
+        //put value in new array
 
-        }
-
-    }
-    
-    //if the k-mer isn't a total length of K and the read is incompletes
-    if (i < 0 && i == (int)(sizeof(read)) && i % k != 0){
-
+        //pass to the hash table function for storage 
     }
 
 
