@@ -8,7 +8,7 @@
     * k-value is the length k either from the input of the user or a default value k<=32
     * read is a read from the FASTA file to be encoded, can be any size, must be a single dimension array
 */
-__global__ void encodeRead(int k-value, char **read){
+__global__ void encodeRead(char **read){
 
     /*
         Base Encoding according to Mahmood's Thesis
@@ -21,15 +21,53 @@ __global__ void encodeRead(int k-value, char **read){
         New Encoding addidtion
         N = 00
     */
-    
-    //iterate through the read and encode it into the 64-bit representation
-    for(int i=0; i < sizeof(read); i++){
-        //encode the value
+    //use get method to get the 'K' value from the input method
+    int k = 0;
+    //int k = getSizeOfKFromUserInputReader();
 
-        //put value in new array
+    //make sure that K is smaller than the size of the read
+    if(k <= sizeof(read))
+    {
+        int begin = 0;      //iterator
+        int end = k;        //iterator
+        //Iterating through the read until the end of the file
+        while(end <= sizeof(read)){
+            long 64bitkmer = 0;
+            //will loop through the substring of the read, converting each base to the 2-bit representation
+            for(int i=begin; i < end; i++){
+                char value = read[i];
+                switch(value){
+                    case 'A':
+                        64bitkmer = 64bitkmer * 100;
+                        break;
+                    case 'C':
+                        64bitkmer = 64bitkmer * 100;
+                        64bitkmer += 1;
+                        break;
+                    case 'G':
+                        64bitkmer = 64bitkmer * 100;
+                        64bitkmer += 10;
+                        break;
+                    case 'T':
+                        64bitkmer = 64bitkmer * 100;
+                        64bitkmer += 11;
+                        break;
+                    default:
+                        64bitkmer = 64bitkmer * 100;
+                        break;
+                }
+            }
 
-        //pass to the hash table function for storage 
+            begin += k;
+            end += k;
+        }
     }
+    else{
+        //thow some error
+    }
+
+
+
 
 
 
