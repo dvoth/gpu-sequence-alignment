@@ -36,6 +36,7 @@ __global__ void encodeRead(char **read){
             //will loop through the substring of the read, converting each base to the 2-bit representation
             for(int i=begin; i < end; i++){
                 char value = read[i];
+                //switch statement to increase the long, the default where there is a N, wil be 00
                 switch(value){
                     case 'A':
                         64bitkmer = 64bitkmer * 100;
@@ -63,7 +64,7 @@ __global__ void encodeRead(char **read){
         }
     }
     else{
-        //thow some error
+        //thow an error that says that the k value is/was smaller than the read length
     }
 
 
