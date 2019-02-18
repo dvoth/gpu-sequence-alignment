@@ -59,7 +59,7 @@ __host__ __device__ void baseToLong(char *val, int KSize, long long unsigned *re
 
 }
 
-__host__ __device__ void encodData(char *val, int KSize){ 
+__host__ __device__ void encodeData(char *val, int KSize){ 
     long long unsigned kMer = 0;        //create the var that will be the K-Mer
 	baseToLong(val, KSize, (&kMer));       //transform the bases into the long long representation
 
