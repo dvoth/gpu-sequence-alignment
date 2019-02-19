@@ -63,9 +63,9 @@ __host__ __device__ void encodeData(char *val, int KSize){
     long long unsigned kMer = 0;        //create the var that will be the K-Mer
 	baseToLong(val, KSize, (&kMer));       //transform the bases into the long long representation
 
-    long long unsigned lMer = 0;         //create the var that will be the L-Mer
-    int LSize = KSize - 1;              //reduce the size sine L = K - 1
-    baseToLong(val, LSize, (&lMer));       //transform the bases into the long long representation
+    // long long unsigned lMer = 0;         //create the var that will be the L-Mer
+    // int LSize = KSize - 1;              //reduce the size sine L = K - 1
+    // baseToLong(val, LSize, (&lMer));       //transform the bases into the long long representation
     
     //next step is to put the encoded K-mer into the hash table
 }
