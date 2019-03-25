@@ -35,6 +35,21 @@ typedef struct  encodedData
 		else if ((*(*temp)) == bs4)
 			(*temp) = (&bs5);
 	}
+		//simple check to see if list is empty 1 = yes and 0 = no
+		__host__ __device__ void isEmpty(int *result) {
+			if (bs1 == 0 && bs2 == 0 && bs3 == 0 && bs4 == 0 && bs5 == 0)
+				(*result) = 1;
+			else
+				(*result) = 0;
+		}
+		//key creater from the encodedData object for the hash table
+		__host__ __device__ void createKey(long long unsigned *result) {
+			(*result) = bs1;
+			(*result) += bs2;
+			(*result) += bs3;
+			(*result) += bs4;
+			(*result) += bs5;
+		}
 
 } encodedData;
 
